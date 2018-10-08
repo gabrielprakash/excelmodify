@@ -1,0 +1,8 @@
+.row.col-md-12.col-lg-12
+  .col-sm-8.col-sm-offset-2
+    while message = flash.shift()
+        .alert.alert-dismissible(role='alert' class='#{"alert-"+message.type}')
+            button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                span(aria-hidden="true") &times;
+            p= message.message
+    //-   span.glyphicon.glyphicon.glyphicon-thumbs-up(aria-hidden='true')

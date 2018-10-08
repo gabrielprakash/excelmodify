@@ -1,0 +1,6 @@
+if errors && errors.length > 0
+    .alert.alert-danger
+        a(href="#" class="close" data-dismiss="alert") &times;
+        each error in errors
+            .error #{error.error || error.message}
+                      

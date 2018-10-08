@@ -1,0 +1,48 @@
+include ./errors.jade
+doctype html
+html
+ head
+   title Admin Portal
+   meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+   block scripts
+       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+       script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+       script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous")
+   block styles
+       link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+       link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css')
+       link(rel='stylesheet', type='text/css',href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css")
+       style(type='text/css').
+           .main-container{ min-height: 82vh; }
+           footer{ background: rgba(239, 239, 239, 0.58)}
+           .copyRights{ line-height: 55px;}
+           footer #navbar{ padding-top: 5px;}
+           .logo {width:110px;height:30px;}
+ body
+    block header
+  
+       nav.navbar.navbar-default.navbar-static-top
+           .container
+               .navbar-header
+                   button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                       span.sr-only Toggle navigation
+                       span.icon-bar
+                       span.icon-bar
+                       span.icon-bar
+                   a.navbar-brand(href='/') Admin portal
+               #navbar.navbar-collapse.collapse
+                if (user)
+                   ul.nav.navbar-nav.navbar-right
+                       li
+                           a(href="/logout") Logout
+   
+    include ./flash.jade    
+    div.container-fluid.main-container
+        block content
+            != html.content
+   
+   block footer
+       footer.footer
+           .container
+               #footer
+                   p.col-xs-12.copyRights Copyright © 2018 Jacobs. All rights reserved.
