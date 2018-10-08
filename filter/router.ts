@@ -65,11 +65,12 @@ router.route('/').all(async (req:any, res: any, next) => {
         let filterRecords = await FilterRecords(req.file.path);
         var filename = 'approved_emails.csv'
         var content = filterRecords.join(',\n');
+        req.flash('success','Filtered Successfully.');
         res.setHeader('Content-disposition', 'attachment; filename=' + filename);
         res.setHeader('Content-Length', content.length);
         res.write(content, 'utf8');
         res.end();     
-        req.flash('success', 'Filtered Sucessfully.');
+        res.redirect('/');
     } catch (error) {
         req.flash('danger', error.message)
         res.form.setValues(req.body);
